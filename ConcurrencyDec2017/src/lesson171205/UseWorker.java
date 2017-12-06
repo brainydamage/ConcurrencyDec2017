@@ -3,7 +3,7 @@ package lesson171205;
 import lesson171201.Utils;
 
 public class UseWorker {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("main started");
 
         Worker worker = new Worker();
@@ -32,6 +32,7 @@ public class UseWorker {
             System.out.println("four");
         });
 
+        worker.getThread().join();
         System.out.println("main finished");
     }
 }

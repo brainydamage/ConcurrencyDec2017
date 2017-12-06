@@ -6,13 +6,18 @@ import java.util.concurrent.Executor;
 
 public class Worker implements Executor {
 
+    private Thread thread;
     private final Object mutex = new Object();
     private Queue<Runnable> tasks = new LinkedList<>();
     private boolean POISON_PILL;
 
     public Worker() {
-        Thread thread = new Thread(this::processTasks);
+        thread = new Thread(this::processTasks);
         thread.start();
+    }
+
+    public Thread getThread() {
+        return thread;
     }
 
     public void execute(Runnable task) {
