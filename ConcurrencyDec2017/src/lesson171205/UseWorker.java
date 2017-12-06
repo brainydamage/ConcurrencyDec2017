@@ -23,14 +23,15 @@ public class UseWorker {
             System.out.println("three");
         });
 
+        //TODO подать какой-то сигнал, что здесь нужно завершить работу =>
+        //TODO Worker может завершать работу
+        worker.shutdown();
+
         worker.execute(() -> {
             Utils.pause(1000);
             System.out.println("four");
         });
 
-
-        //TODO надо подать какой-то сигнал, что задач больше не будет =>
-        //TODO Worker может завершать работу
         System.out.println("main finished");
     }
 }
