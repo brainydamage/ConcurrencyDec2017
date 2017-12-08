@@ -2,37 +2,37 @@ package lesson171205;
 
 import lesson171201.Utils;
 
-public class UseWorker {
+public class UseMyWorker {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("main started");
 
-        Worker worker = new Worker();
+        MyWorker myWorker = new MyWorker();
 
-        worker.execute(() -> {
+        myWorker.execute(() -> {
             Utils.pause(1000);
             System.out.println("one");
         });
 
-        worker.execute(() -> {
+        myWorker.execute(() -> {
             Utils.pause(1000);
             System.out.println("two");
         });
 
-        worker.execute(() -> {
+        myWorker.execute(() -> {
             Utils.pause(1000);
             System.out.println("three");
         });
 
         //TODO подать какой-то сигнал, что здесь нужно завершить работу =>
-        //TODO Worker может завершать работу
-        worker.shutdown();
+        //TODO MyWorker может завершать работу
+        myWorker.shutdown();
 
-        worker.execute(() -> {
+        myWorker.execute(() -> {
             Utils.pause(1000);
             System.out.println("four");
         });
 
-        worker.getThread().join();
+        myWorker.getThread().join();
         System.out.println("main finished");
     }
 }

@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Executor;
 
-public class Worker implements Executor {
+public class MyWorker implements Executor {
 
     private Thread thread;
     private final Object mutex = new Object();
     private Queue<Runnable> tasks = new LinkedList<>();
     private boolean POISON_PILL;
 
-    public Worker() {
+    public MyWorker() {
         thread = new Thread(this::processTasks);
         thread.start();
     }
